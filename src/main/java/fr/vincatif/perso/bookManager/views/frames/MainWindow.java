@@ -51,7 +51,7 @@ public class MainWindow extends JFrame {
         fileMenuExitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
         fileMenuNewItem.addActionListener(e -> {
             boolean error = true;
-            BookAddDialog dialog = new BookAddDialog(this, libraryFile, bookCheck);
+            BookAddDialog dialog = new BookAddDialog(this, bookCheck);
             try {
                 if (libraryFile.addBook(dialog.getBook()))
                     error = false;

@@ -1,22 +1,27 @@
 package fr.vincatif.perso.bookManager.views.dialogs;
 
 import fr.vincatif.perso.bookManager.controllers.DataBookCheck;
-import fr.vincatif.perso.bookManager.controllers.LibraryFile;
 import fr.vincatif.perso.bookManager.models.Book;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * {@link JDialog} for add a {@link Book}
+ */
 public class BookAddDialog extends JDialog {
-    private final LibraryFile file;
     private Book book = null;
     private final JTextField titleTextField = new JTextField(20);
     private final JTextField authorTextField = new JTextField(20);
     private final JTextField copyNumberTextField = new JTextField(5);
 
-    public BookAddDialog(JFrame parent, LibraryFile file, DataBookCheck check) {
+    /**
+     * create the dialog with parent and controller
+     * @param parent the parent of dialog
+     * @param check the {@link DataBookCheck} controller
+     */
+    public BookAddDialog(JFrame parent, DataBookCheck check) {
         super(parent, "Ajout d'un nouveau livre", true);
-        this.file = file;
 
         JButton buttonValidate = new JButton("Valider");
         buttonValidate.addActionListener(l -> {
