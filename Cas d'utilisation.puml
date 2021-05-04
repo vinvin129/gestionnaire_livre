@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+actor user
+actor administrator
+
+usecase "consulter" as cons
+usecase "modifier" as update
+usecase "ajouter" as add
+
+rectangle "Gestion des livres" {
+    usecase "consulter livre" as bookCons
+    usecase "ajouter livre" as addBook
+}
+
+rectangle "Gestion des emprunteurs" {
+    usecase "consulter la liste des emprunteurs d'un livre" as borrowerList
+    usecase "modifier la liste des emprunteurs d'un livre" as borrowerUpdate
+}
+
+cons <|-- bookCons
+cons <|-right- borrowerList
+add <|-- addBook
+update <|-- borrowerUpdate
+administrator -left-|> user
+
+user --> cons
+administrator --> add
+administrator --> update
+
+@enduml

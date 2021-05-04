@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Book {
+    -name: String
+    -author: String
+    -copyNumber: int
+
+    +Book(String, String, int)
+    +getName(): String
+    +getAuthor(): String
+    +getCopyNumber(): int
+}
+
+class Library {
+    -path: String
+}
+
+class Controller {
+
+}
+
+class Window {
+}
+
+abstract class AbstractView {
+}
+
+class ArrayBookPanel {
+}
+
+class NewBookPanel {
+
+}
+
+class Main
+
+AbstractView <|-- ArrayBookPanel
+
+Window --> "0..1" AbstractView: -view
+Library --> "0..*" Book: -bookList
+
+@enduml
