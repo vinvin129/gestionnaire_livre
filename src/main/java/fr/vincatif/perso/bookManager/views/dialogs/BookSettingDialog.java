@@ -6,12 +6,20 @@ import fr.vincatif.perso.bookManager.models.Borrower;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * {@link JDialog} for edit a {@link Book}
+ */
 public class BookSettingDialog extends JDialog {
     private Book book;
     private final JTextField titleTextField;
     private final JTextField authorTextField;
     private final JTextField copyNumberTextField;
 
+    /**
+     * create the dialog with parent and book
+     * @param parent the parent of dialog
+     * @param book the book with data
+     */
     public BookSettingDialog(JFrame parent, Book book) {
         super(parent, "Modification des données du livre", true);
         this.book = book;
@@ -59,6 +67,10 @@ public class BookSettingDialog extends JDialog {
 
     }
 
+    /**
+     * obtain the updated {@link Book}
+     * @return book
+     */
     public Book getUpdatedBook() {
         return book;
     }

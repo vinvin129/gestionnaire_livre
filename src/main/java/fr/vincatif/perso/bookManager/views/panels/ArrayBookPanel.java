@@ -1,6 +1,5 @@
 package fr.vincatif.perso.bookManager.views.panels;
 
-import fr.vincatif.perso.bookManager.views.frames.BookWindow;
 import fr.vincatif.perso.bookManager.controllers.LibraryFile;
 import fr.vincatif.perso.bookManager.controllers.LibrarySearch;
 import fr.vincatif.perso.bookManager.models.Book;
@@ -9,10 +8,14 @@ import fr.vincatif.perso.bookManager.models.Library;
 import fr.vincatif.perso.bookManager.views.customComponents.ButtonEditor;
 import fr.vincatif.perso.bookManager.views.customComponents.ButtonRenderer;
 import fr.vincatif.perso.bookManager.views.customComponents.TableComponent;
+import fr.vincatif.perso.bookManager.views.frames.BookWindow;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * {@link JPanel} to show {@link Book} in array. You can make search with the {@link SearchPanel} panel.
+ */
 public class ArrayBookPanel extends JPanel {
     JTable table = null;
     Library library;
@@ -47,6 +50,9 @@ public class ArrayBookPanel extends JPanel {
         initTable();
     }
 
+    /**
+     * initialise the table with all books
+     */
     private void initTable() {
         String[] title = {"Titre", "Auteur", "nbr d'exemplaire", "nbr disponible", ""};
         BookTableModel tableModel = new BookTableModel(title);
