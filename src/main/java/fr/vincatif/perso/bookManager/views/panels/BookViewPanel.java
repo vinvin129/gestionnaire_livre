@@ -11,12 +11,16 @@ import javax.xml.transform.TransformerException;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * the {@link JPanel} for {@link fr.vincatif.perso.bookManager.views.frames.BookWindow}
+ */
 public class BookViewPanel extends JPanel {
     private final Book book;
     private final LibraryFile file;
     private final JButton borrowButton;
     private final JPanel mainPanel = this;
     private CenterPanel centerPanel;
+
     public BookViewPanel(LibraryFile file, Book book) {
         this.book = book;
         this.file = file;
@@ -95,6 +99,9 @@ public class BookViewPanel extends JPanel {
             this.add(pBottom, BorderLayout.CENTER);
         }
 
+        /**
+         * actualize enable button to change nb of loaned exemplar.
+         */
         public void actualization() {
             mainPanel.remove(this);
             centerPanel = new CenterPanel();

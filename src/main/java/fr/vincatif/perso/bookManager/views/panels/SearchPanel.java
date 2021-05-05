@@ -9,6 +9,9 @@ import javax.swing.event.EventListenerList;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * the {@link JPanel} for a search bar
+ */
 public class SearchPanel extends JPanel {
     private final JTextField searchBar = new JTextField(30);
     private final EventListenerList listenerList = new EventListenerList();
@@ -34,10 +37,18 @@ public class SearchPanel extends JPanel {
         this.add(searchBar);
     }
 
+    /**
+     * obtain the list of {@link TextFieldListener}
+     * @return TextFieldListener array
+     */
     public TextFieldListener[] getTextFieldListenerList() {
         return listenerList.getListeners(TextFieldListener.class);
     }
 
+    /**
+     * add a {@link TextFieldListener}
+     * @param listener the listener
+     */
     public void addTextFieldListener(TextFieldListener listener) {
         listenerList.add(TextFieldListener.class, listener);
     }
