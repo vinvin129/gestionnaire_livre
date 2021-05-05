@@ -1,3 +1,4 @@
 # Project exclude paths
 /target/
 /library.xml
+/dependency-reduced-pom.xml
