@@ -3,7 +3,6 @@ package fr.vincatif.perso.bookManager.views.panels;
 import fr.vincatif.perso.bookManager.controllers.LibraryFile;
 import fr.vincatif.perso.bookManager.models.Book;
 import fr.vincatif.perso.bookManager.models.Borrower;
-import fr.vincatif.perso.bookManager.views.dialogs.BorrowerAddDialog;
 import org.xml.sax.SAXException;
 
 import javax.swing.*;
@@ -17,40 +16,16 @@ import java.io.IOException;
 public class BookViewPanel extends JPanel {
     private final Book book;
     private final LibraryFile file;
-    private final JButton borrowButton;
     private final JPanel mainPanel = this;
     private CenterPanel centerPanel;
 
     public BookViewPanel(LibraryFile file, Book book) {
         this.book = book;
         this.file = file;
-        borrowButton = new JButton("Ajouter un emprunteur");
         this.centerPanel = new CenterPanel();
         this.setLayout(new BorderLayout());
-        borrowButton.addActionListener(l -> {
-            boolean error = true;
-            new BorrowerAddDialog((JFrame)this.getParent().getParent().getParent(), book);
-
-            try {
-                if (file.updateBook(book)) {
-                    this.centerPanel.actualization();
-                    error = false;
-                }
-            } catch (TransformerException | IOException | SAXException e) {
-                e.printStackTrace();
-            }
-
-            if (error) {
-                JOptionPane.showMessageDialog(this,
-                        "Le livre n'a pas pu être mis à jour.",
-                        "Avertissement",
-                        JOptionPane.WARNING_MESSAGE
-                );
-            }
-        });
 
         this.add(centerPanel, BorderLayout.CENTER);
-        this.add(new SouthPanel(), BorderLayout.SOUTH);
     }
 
     class CenterPanel extends JPanel {
@@ -106,7 +81,7 @@ public class BookViewPanel extends JPanel {
             mainPanel.remove(this);
             centerPanel = new CenterPanel();
             mainPanel.add(centerPanel, BorderLayout.CENTER);
-            borrowButton.setEnabled(book.getLoanedBookNb() < book.getCopyNumber());
+            mainPanel.getParent().getParent().getParent().repaint();
             mainPanel.revalidate();
             mainPanel.repaint();
             try {
@@ -120,13 +95,6 @@ public class BookViewPanel extends JPanel {
             } catch (IOException | SAXException | TransformerException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    class SouthPanel extends JPanel {
-        public SouthPanel() {
-            borrowButton.setEnabled(book.getLoanedBookNb() < book.getCopyNumber());
-            this.add(borrowButton);
         }
     }
 }
