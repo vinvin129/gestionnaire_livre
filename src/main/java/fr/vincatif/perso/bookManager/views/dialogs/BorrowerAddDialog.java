@@ -6,11 +6,20 @@ import fr.vincatif.perso.bookManager.models.Borrower;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * {@link JDialog} for add a {@link Borrower} in a {@link Book}. <BR>
+ *     The {@link Borrower} is added in linked {@link Book}
+ */
 public class BorrowerAddDialog extends JDialog {
     private final Book book;
     private final JTextField nameTextField;
     private int copyNb = 1;
 
+    /**
+     * create the dialog with parent and book
+     * @param parent the parent of dialog
+     * @param book the book to add {@link Borrower}
+     */
     public BorrowerAddDialog(JFrame parent, Book book) {
         super(parent, "Ajout d'un emprunteur", true);
         this.book = book;
@@ -73,6 +82,9 @@ public class BorrowerAddDialog extends JDialog {
             this.add(p2);
         }
 
+        /**
+         * actualize enable button to change nb of loaned exemplar.
+         */
         private void actualization() {
             nbLabel.setText(String.valueOf(copyNb));
             bPlus.setEnabled((copyNb+1) <= book.getCopyNumber()-book.getLoanedBookNb());
