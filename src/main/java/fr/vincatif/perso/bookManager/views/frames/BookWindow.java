@@ -13,10 +13,19 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
+/**
+ * {@link JFrame} for show one {@link Book}.<BR>
+ *     Several windows of the same book is allowed
+ */
 public class BookWindow extends JFrame {
     private JPanel panel;
     private Book book;
 
+    /**
+     * create a window for a {@link Book} with a {@link LibraryFile } for save change.
+     * @param file the linked {@link LibraryFile}
+     * @param book the linked {@link Book}
+     */
     public BookWindow(LibraryFile file, Book book) {
         this.book = book;
         panel = new BookViewPanel(file, book);

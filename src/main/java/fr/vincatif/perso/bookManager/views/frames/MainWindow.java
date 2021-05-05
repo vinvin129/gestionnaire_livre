@@ -14,6 +14,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
+/**
+ * Principal {@link JFrame}. This show {@link ArrayBookPanel}
+ */
 public class MainWindow extends JFrame {
     public static final String PATH = "library.xml";
 
