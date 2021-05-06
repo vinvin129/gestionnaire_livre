@@ -6,7 +6,7 @@
 
     <groupId>fr.vincatif.perso</groupId>
     <artifactId>gestionnaire_livre</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>fr.vincatif.perso gestionnaire_livre</name>

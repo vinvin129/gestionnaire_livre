@@ -81,6 +81,12 @@ public class ArrayBookPanel extends JPanel {
     protected void addBookToTable(Book b) {
         JButton button = new JButton("Ouvrir");
         button.addActionListener(e -> new BookWindow(file, b));
-        ((BookTableModel) table.getModel()).addRow(new Object[]{b.getTitle(), b.getAuthor(), b.getCopyNumber(), b.getLoanedBookNb(), button});
+        ((BookTableModel) table.getModel()).addRow(new Object[]{
+                b.getTitle(),
+                b.getAuthor(),
+                b.getCopyNumber(),
+                b.getCopyNumber() - b.getLoanedBookNb(),
+                button
+        });
     }
 }
